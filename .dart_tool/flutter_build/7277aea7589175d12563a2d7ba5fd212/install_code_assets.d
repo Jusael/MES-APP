@@ -1,0 +1,1 @@
+ C:\\Flutter\ Project\\mes_mobile_app\\.dart_tool\\flutter_build\\7277aea7589175d12563a2d7ba5fd212\\native_assets.json: 
