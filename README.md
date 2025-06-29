@@ -39,12 +39,12 @@ Flutter 기반으로 제작된 모바일 MES 앱입니다.
 
 ## 프로젝트 구조
 lib/
-┣ dto/ # AlarmDto, SignDto 등 데이터 객체
-┣ services/ # FCM 초기화, 알람 처리 등
-┣ repository/ # AlarmRepository (SQLite 저장소)
-┣ screens/ # 로그인, 홈, 알람, 서명 등 UI 구성
-┣ utils/ # 전역 상수, enum, 공용 함수
-┗ main.dart # Firebase 초기화 및 라우팅
+- dto/ : 알림, 서명 등의 데이터 객체 정의
+- services/ : Firebase 초기화, 알람 저장 등 서비스 기능
+- repository/ : SQLite 기반 로컬 저장소 구현
+- screens/ : 로그인, 홈, 서명 등의 화면 UI
+- utils/ : 전역 상수, enum, 공용 함수
+- main.dart : 앱 진입점 및 Firebase 초기화
 
 ## 연동 API
 
