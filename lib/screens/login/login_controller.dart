@@ -21,14 +21,14 @@ class LoginController {
     String password,
   ) async {
     try {
-      final userInfo = await ApiService.post('/api/Login/postuserinfo', {
-        'UserId': userId,
-        'Password': password,
+      final userInfo = await ApiService.post('/api/login/post-user-info', {
+        'userId': userId,
+        'passWord': password,
       });
       print("🔵 상태코드: ${userInfo.statusCode}");
       print("🔵 응답 바디: '${userInfo.body}'");
       final result = jsonDecode((userInfo.body));
-      if (result['success'] != true) {
+      if (result['succes'] != true) {
         throw Exception("사번 또는 패스워드를 확인해 주세요.\n정보가 정확하다면, 계정 유효기간을 확인해주세요.");
       }
       return result['level'];
@@ -49,7 +49,7 @@ class LoginController {
       if (fcmToken == null)
         throw Exception("FCM 토큰을 발급받지 못했습니다.\n잠시 후 다시 시도해주세요.");
 
-      final userInfo = await ApiService.post('/api/Login/postfcm', {
+      final userInfo = await ApiService.post('/api/login/post-fcm', {
         'userId': userId,
         'fcmToken': fcmToken,
       });
@@ -76,8 +76,8 @@ class LoginController {
 
   Future<bool> postJwtToken(BuildContext context, String userId) async {
     try {
-      final userInfo = await ApiService.post('/api/Login/postjwt', {
-        'UserId': userId,
+      final userInfo = await ApiService.post('/api/login/post-jwt', {
+        'userId': userId,
       });
       print("🔵 상태코드: ${userInfo.statusCode}");
       print("🔵 응답 바디: '${userInfo.body}'");

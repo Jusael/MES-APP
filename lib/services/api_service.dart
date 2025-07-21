@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class ApiService {
-  
+  static const String baseUrl = 'http://192.168.0.10:5999';
  // static const String baseUrl = 'http://localhost:5216';
   //GET은 데이터 조회만.
   //화면에서 사용할때 예시

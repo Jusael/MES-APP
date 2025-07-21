@@ -64,7 +64,7 @@ Future<void> insertNotExistsMessage(BuildContext context) async {
   print("🔵 userId : ${userId}");
 
   final response = await ApiService.get(
-    '/api/alarm/getincomingalarmbutunread',
+    '/api/alarm/get-incoming-alarm-but-unread',
     queryParams: {'UserId': userId ?? ''},
   );
 
