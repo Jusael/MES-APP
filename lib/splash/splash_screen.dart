@@ -64,22 +64,20 @@ Future<void> insertNotExistsMessage(BuildContext context) async {
   print("🔵 userId : ${userId}");
 
   final response = await ApiService.get(
-    '/api/alarm/getincomingalarmbutunread',
+    '/api/alarm/get-incoming-alarm-but-unread',
     queryParams: {'UserId': userId ?? ''},
   );
 
   // 3. 받아온 알람들을 저장
   if (response.statusCode == 200) {
-    final Map<String, dynamic> body = jsonDecode(response.body);
+    final decodedBody = utf8.decode(response.bodyBytes);
 
-    if (body['success']) {
-      final List<dynamic> alarmList = body['alarms'];
+    final List<dynamic> alarmList = jsonDecode(decodedBody);
 
-      final alarmRepository = AlarmRepository();
-      for (final alarmJson in alarmList) {
-        final alarm = AlarmBasic.fromMap(alarmJson);
-        await alarmRepository.insertAlarmIfNotExists(alarm);
-      }
+    final alarmRepository = AlarmRepository();
+    for (final alarmJson in alarmList) {
+      final alarm = AlarmBasic.fromMap(alarmJson);
+      await alarmRepository.insertAlarmIfNotExists(alarm);
     }
   }
 }
